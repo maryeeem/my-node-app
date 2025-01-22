@@ -11,6 +11,15 @@ pipeline {
                 sh 'npm start'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+            post {
+                always {
+                    junit 'test-results.xml'
+                }
+            }
+        }
     }
-    
 }
