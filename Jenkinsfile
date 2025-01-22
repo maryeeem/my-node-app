@@ -11,6 +11,16 @@ pipeline {
                 sh 'npm start'
             }
         }
+        stage('Lint') {
+            steps {
+                sh 'npm run lint'
+            }
+        }
+        stage('Security Scan') {
+            steps {
+                sh 'npm audit'
+            }
+        }
         stage('Test') {
             steps {
                 sh 'npm test'
